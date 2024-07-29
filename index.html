@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for Shruti</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffccff, #ffcccc, #ccffcc, #ccccff);
+            background-size: 200% 200%;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif;
+            padding: 20px 40px;
+            margin: 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            background: #ff5733;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background: #c70039;
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+
+        .options {
+            margin-top: 30px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #message {
+            font-size: 2em;
+            color: #555;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+    <script>
+        function showTextAndOptions(isOkay) {
+            const messageElement = document.getElementById('message');
+            messageElement.innerHTML = isOkay ? "So what, still text me😁" : "Then text me 😢";
+            messageElement.style.display = 'block';
+            document.getElementById('options').style.display = 'block';
+        }
+
+        function moveButton() {
+            const button = document.getElementById('notInterested');
+            const x = Math.floor(Math.random() * (window.innerWidth - button.offsetWidth));
+            const y = Math.floor(Math.random() * (window.innerHeight - button.offsetHeight));
+            button.style.position = 'absolute';
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Hey Shruti, how are you? 😊</h1>
+        <button onclick="showTextAndOptions(false)">Are you not okay? 😔</button>
+        <button onclick="showTextAndOptions(true)">Are you okay? 😃</button>
+        <p id="message" class="hidden"></p>
+        <div id="options" class="hidden">
+            <button onclick="window.location.href='https://www.instagram.com/sshubham19/'">Instagram 📸</button>
+            <button onclick="window.location.href='https://wa.me/918434879194'">WhatsApp 📱</button>
+            <button id="notInterested" onclick="moveButton()">Not Interested 🙄</button>
+        </div>
+    </div>
+</body>
+</html>
